@@ -1,0 +1,37 @@
+﻿@model Covid.ActiveCasesViewModel
+@{
+    ViewData["Title"] = "Active Cases";
+}
+
+<canvas id="activeCasesLineChart"></canvas>
+                    
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>  
+    <script>
+        const myType = 'line';
+
+        const myChartData = {
+            labels: @Json.Serialize(Model.ActiveCaseDates),
+            datasets: [
+                {
+                    borderColor: '#000',
+                    fill: false,
+                    label: 'Active Cases',
+                    data: @Json.Serialize(Model.ActiveCaseCounts),
+                }
+            ]
+        };
+
+        const myOptions = {
+            repsonsive: false,
+            maintainAspectRatio: false
+        };
+
+        const ctx = document.getElementById('activeCasesLineChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: myType,
+            data: myChartData,
+            options: myOptions
+        })
+    </script>
+}
