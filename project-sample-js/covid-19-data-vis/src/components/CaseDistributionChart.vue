@@ -1,5 +1,9 @@
 <template>
+  <div class="card">
+    <div class="card-content">
       <pie-chart v-if="loaded" :chartdata="chartdata" :options="options" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -32,11 +36,11 @@ export default {
         .then(response => response.json())
         .then(summaryData => {
           const filteredSummaryData = summaryData.Countries.map(sd => {
-              return {
-                Country: sd.Country,
-                TotalConfirmed: sd.TotalConfirmed
-              };
-            })
+            return {
+              Country: sd.Country,
+              TotalConfirmed: sd.TotalConfirmed
+            };
+          })
             .sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
             .slice(0, 10);
 
@@ -71,7 +75,7 @@ export default {
 
 <style>
   #pie-chart {
-    width: 50% !important;
-    height: 50% !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 </style>
