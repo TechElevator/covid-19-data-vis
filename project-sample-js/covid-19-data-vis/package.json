@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bulma": "^0.8.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.4",
     "node-sass": "^4.14.1",
     "vue": "^2.6.11",
